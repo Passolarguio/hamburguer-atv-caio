@@ -1,4 +1,5 @@
 import Categoria from "../models/Categoria.js";
+import Produto from "../models/Produto.js"; 
 
  const CategoriaController = {
   create: async (req, res) => {
@@ -12,7 +13,12 @@ import Categoria from "../models/Categoria.js";
   findAll: async (req, res) => { 
     try
     {
-      const categorias = await Categoria.findAll();
+      const categorias = await Categoria.findAll({
+        include: [
+          { model: Produto, as: 'produtos' } 
+        ]
+      });
+
       if (categorias.length === 0) {
         throw new Error('Nenhuma categoria encontrada');
       }
