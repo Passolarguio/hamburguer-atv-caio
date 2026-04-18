@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Avaliacao.associate = (models) => {
     Avaliacao.belongsTo(models.Pedido, {
-      foreignKey: 'pedidoId',
+      foreignKey: 'pedido_id',
       as: 'pedido'
     });
   };
